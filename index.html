@@ -8,11 +8,16 @@
 <body>
   <h1>Audio Level Calculator</h1>
   <div class="container">
-    <div class="input-group">
-      <label for="rms-values">Enter level values (dB), separated by commas:</label>
-      <input type="text" id="rms-values" placeholder="-6, -12, -9">
+    <div id="sliders-container">
+      <div class="slider-group">
+        <div class="slider-header">
+          <label for="slider1">Level 1</label>
+          <span class="db-value">-6 dB</span>
+        </div>
+        <input type="range" id="slider1" min="-60" max="0" value="-6" step="0.1" class="level-slider">
+      </div>
+      <button id="add-slider" class="secondary-button">Add Level</button>
     </div>
-    <button id="calculate">Calculate Levels</button>
     <div class="results" id="results"></div>
   </div>
   <script type="module" src="/src/main.ts"></script>
