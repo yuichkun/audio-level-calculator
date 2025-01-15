@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RMS Mixer</title>
+  <title>Audio Level Calculator</title>
 </head>
 <body>
-  <h1>RMS Mixer</h1>
+  <h1>Audio Level Calculator</h1>
   <div class="container">
     <div class="input-group">
-      <label for="rms-values">Enter RMS values (dB), separated by commas:</label>
+      <label for="rms-values">Enter level values (dB), separated by commas:</label>
       <input type="text" id="rms-values" placeholder="-6, -12, -9">
     </div>
-    <button id="calculate">Calculate Combined RMS</button>
+    <button id="calculate">Calculate Levels</button>
     <div class="results" id="results"></div>
   </div>
   <script type="module" src="/src/main.ts"></script>

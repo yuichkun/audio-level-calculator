@@ -8,45 +8,68 @@ body {
 
 h1 {
   text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
 .container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-input[type="number"] {
-  width: calc(100% - 20px);
-  padding: 10px;
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px;
   font-size: 16px;
-  margin-top: 5px;
+  border: 2px solid #e2e8f0;
+  border-radius: 6px;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4299e1;
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background: #007bff;
+  padding: 12px;
+  background: #4299e1;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 button:hover {
-  background: #0056b3;
+  background: #3182ce;
 }
 
 .results {
-  margin-top: 20px;
-  font-size: 18px;
-  text-align: center;
+  margin-top: 25px;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
 } 

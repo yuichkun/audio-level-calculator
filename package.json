@@ -1,5 +1,5 @@
 {
-  "name": "rms-mixer",
+  "name": "audio-level-calculator",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "A tool for calculating combined audio levels",
   "devDependencies": {
     "@types/node": "^20.11.5",
     "typescript": "^5.3.3",
