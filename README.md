@@ -2,6 +2,8 @@
 
 A web-based tool for calculating combined audio levels in decibels (dB). This calculator helps audio engineers and enthusiasts determine the combined RMS and Peak levels when multiple audio signals are mixed together.
 
+🔗 **[Try it live](https://audio-level-calculator.vercel.app/)**
+
 ![Audio Level Calculator Screenshot](./screenshot.jpeg)
 
 ## Features
