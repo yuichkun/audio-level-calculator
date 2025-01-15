@@ -6,6 +6,15 @@
   <title>RMS Mixer</title>
 </head>
 <body>
-  
+  <h1>RMS Mixer</h1>
+  <div class="container">
+    <div class="input-group">
+      <label for="rms-values">Enter RMS values (dB), separated by commas:</label>
+      <input type="text" id="rms-values" placeholder="-6, -12, -9">
+    </div>
+    <button id="calculate">Calculate Combined RMS</button>
+    <div class="results" id="results"></div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>
