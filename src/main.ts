@@ -30,6 +30,47 @@ function combinePeak(peakValues: number[]): number {
   return linearToDb(combinedLinear);
 }
 
+function createDbInput(initialValue: string): HTMLInputElement {
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.className = 'db-value';
+  input.value = `${initialValue} dB`;
+  return input;
+}
+
+function setupSliderAndInput(slider: HTMLInputElement, dbInput: HTMLInputElement) {
+  // Update slider when db input changes
+  dbInput.addEventListener('blur', () => {
+    const value = parseFloat(dbInput.value.replace(' dB', ''));
+    if (!isNaN(value)) {
+      const clampedValue = Math.min(Math.max(value, -60), 0);
+      slider.value = clampedValue.toString();
+      dbInput.value = `${clampedValue} dB`;
+      updateResults();
+    } else {
+      dbInput.value = `${slider.value} dB`;
+    }
+  });
+
+  // Handle enter key
+  dbInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      dbInput.blur();
+    }
+  });
+
+  // Select all text when focusing
+  dbInput.addEventListener('focus', () => {
+    dbInput.select();
+  });
+
+  // Update db input when slider changes
+  slider.addEventListener('input', () => {
+    dbInput.value = `${slider.value} dB`;
+    updateResults();
+  });
+}
+
 function createSlider(id: number): HTMLDivElement {
   const sliderGroup = document.createElement('div');
   sliderGroup.className = 'slider-group';
@@ -41,9 +82,7 @@ function createSlider(id: number): HTMLDivElement {
   label.htmlFor = `slider${id}`;
   label.textContent = `Level ${id}`;
 
-  const dbValue = document.createElement('span');
-  dbValue.className = 'db-value';
-  dbValue.textContent = '-6 dB';
+  const dbInput = createDbInput('-6');
 
   const slider = document.createElement('input');
   slider.type = 'range';
@@ -54,8 +93,10 @@ function createSlider(id: number): HTMLDivElement {
   slider.step = '0.1';
   slider.className = 'level-slider';
 
+  setupSliderAndInput(slider, dbInput);
+
   sliderHeader.appendChild(label);
-  sliderHeader.appendChild(dbValue);
+  sliderHeader.appendChild(dbInput);
   sliderGroup.appendChild(sliderHeader);
   sliderGroup.appendChild(slider);
 
@@ -98,28 +139,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const newSlider = createSlider(sliderCount);
     slidersContainer.insertBefore(newSlider, addSliderButton);
     updateResults();
-
-    // Add event listeners to the new slider
-    const slider = newSlider.querySelector('input');
-    const dbValue = newSlider.querySelector('.db-value');
-    if (slider && dbValue) {
-      slider.addEventListener('input', (e) => {
-        const target = e.target as HTMLInputElement;
-        dbValue.textContent = `${target.value} dB`;
-        updateResults();
-      });
-    }
   });
 
-  // Initial slider event listener
+  // Setup initial slider
   const initialSlider = document.getElementById('slider1') as HTMLInputElement;
-  const initialDbValue = document.querySelector('.db-value');
+  const initialDbValue = document.querySelector('.db-value') as HTMLInputElement;
   if (initialSlider && initialDbValue) {
-    initialSlider.addEventListener('input', (e) => {
-      const target = e.target as HTMLInputElement;
-      initialDbValue.textContent = `${target.value} dB`;
-      updateResults();
-    });
+    setupSliderAndInput(initialSlider, initialDbValue);
   }
 
   // Initial calculation
